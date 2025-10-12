@@ -96,6 +96,43 @@ def import_gurobi(ensure_license: bool = False) -> Tuple[bool, Optional[Any], Op
         return False, None, None
 
 
+def get_data_root() -> str:
+    """Get the data directory path."""
+    return os.path.join(get_project_root(), 'data')
+
+
+def get_config_root() -> str:
+    """Get the configs directory path."""
+    return os.path.join(get_project_root(), 'configs')
+
+
+def get_modules_root() -> str:
+    """Get the modules directory path."""
+    return os.path.join(get_project_root(), 'modules')
+
+
+def get_eran_tf_verify_path() -> str:
+    """Get the ERAN tf_verify directory path."""
+    return os.path.join(get_modules_root(), 'eran', 'tf_verify')
+
+
+def get_abcrown_path() -> str:
+    """Get the abCrown module directory path."""
+    return os.path.join(get_modules_root(), 'abcrown')
+
+
+def get_path_relative_to_project(relative_path: str) -> str:
+    """Get absolute path for a path relative to project root.
+    
+    Args:
+        relative_path: Path relative to project root (e.g., 'data', 'configs/hybridz_defaults.ini')
+    
+    Returns:
+        Absolute path
+    """
+    return os.path.abspath(os.path.join(get_project_root(), relative_path))
+
+
 def configure_torch_print(linewidth: int = 500,
                           threshold: int = 10000,
                           sci_mode: bool = False,
